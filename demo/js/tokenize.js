@@ -63,13 +63,11 @@ var vm = new Vue({
 
 
 // フォームの内容が変化したらtokenizeする
-vm.$watch("textArea", function (value) {
+vm.$watch("inputText", function (value) {
     // vm.graphEnabled = false;
     vm.svgStyle = "hidden";
-    vm.inputText = value;
     vm.tokenize();
-    Editor.prototype.validateText_(vm.tokens);
-})
+});
 
 
 // Load and prepare tokenizer
