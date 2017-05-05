@@ -32,7 +32,7 @@ var vm = new Vue({
         tokens: [],
         isLoading: true,
         message: "Loading dictionaries ...",
-        svgStyle: "hidden"
+        svgStyle: "visible"
     },
     methods: {
         /*

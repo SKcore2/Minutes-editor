@@ -1,8 +1,10 @@
 @CHARSET "UTF-8";
 
 .editor-form {
-	min-height: 662px;
-	min-width: 500px;
+	min-height: 654px;
+	width: 500px;
+	min-width: 420px;
+	display: block !important;
 }
 
 .editor-title {
@@ -69,6 +71,7 @@ textarea {
 	min-height: 688px;
 	border: 1px solid;
 	min-width: 250px;
+	overflow-y: scroll;
 }
 
 .element-area {
@@ -85,7 +88,7 @@ textarea {
 }
 
 .origin-editor-area {
-
+	min-width: 482px;
 }
 
 .origin-sidemenu-area {
@@ -133,8 +136,12 @@ textarea {
 	margin: 0px -128px 0px;
 	min-width: 1968px;
 }
+
+}
+.validate-label {
+	margin-top: 2px;
 }
 
-.validate-label{
-	margin-top: 2px;
+.validate-form {
+	display: block !important;
 }
