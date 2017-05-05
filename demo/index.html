@@ -31,57 +31,49 @@
 <script src="bower_components/foundation/js/vendor/fastclick.js"></script>
 <script src="bower_components/foundation/js/foundation.min.js"></script>
 <script src="kuromoji/build/kuromoji.js"></script>
+
 </head>
 <body>
 	<div class="contents-root">
-		<div class="row element-area">
+		<div class="element-area">
 
+<div class = "header-title-area">
+<h1>議事録えでぃた～</h1>
+</div>
 			<div class="small-12 columns">
 
-				<!--  <style id="css">
-text {
-	font-weight: 300;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 12px;
-}
-
-.node rect {
-	stroke: #999;
-	stroke-width: 1px;
-	fill: #fff;
-}
-
-.edgeLabel rect {
-	fill: #fff;
-}
-
-.edgePath path {
-	stroke: #333;
-	stroke-width: 1.5px;
-	fill: none;
-}
-</style>
--->
-<div class = "header-option">
-<input type="file" id="selfile" class = "reading-btn">
-<div class = "btn btn-default">保存する</div>
-<div class = "btn btn-primary">議事録をアップする</div>
-</div>
+				<div class="header-option">
+					<div class="dummy-file-btn btn btn-default dummy-position">ファイルを選択</div>
+					<input type="file" id="selfile" class="reading-btn undisplay">
+					<div class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
+					<input type="file" id="new-selfile"
+						class="reading-btn undisplay">
+					<div class="btn btn-default save-file-btn">保存する</div>
+					<div class="btn btn-primary upload-minutes">議事録をアップする</div>
+				</div>
 
 				<div id="demo" class="row minutes-editor-area">
 
-						<div class="origin-sidemenu-area">
+					<div class="origin-sidemenu-area">
 						<ul class="editor-sidemenu">
 							<li>ストップウォッチ</li>
 							<li>設定</li>
 						</ul>
-						</div>
+					</div>
 
 
 
 					<div class="origin-editor-area">
-					<form name="test">
-				<textarea name="txt" rows="10" cols="50" class = "editor-form" readonly></textarea></form>
+						<div class="title-field">
+
+							<input class="editor-title origin-editor-title readonly"
+								placeholder="タイトル" readonly></input>
+						</div>
+
+						<form name="test">
+							<textarea name="txt" rows="10" cols="50"
+								class="editor-form readonly" readonly></textarea>
+						</form>
 					</div>
 					<div class="editor-sidemenu-area">
 						<ul class="editor-sidemenu">
@@ -95,7 +87,7 @@ text {
 						<div class="large-12 columns">
 							<div class="title-field">
 
-								<input class="editor-title" placeholder="タイトルを記入してください"></input>
+								<input class="editor-title minutes-editor-title" placeholder="タイトルを記入してください"></input>
 							</div>
 
 
@@ -106,9 +98,8 @@ text {
 							<form v-show="!isLoading" class="validate-form">
 
 								<div class="editor-field">
-
-									<textarea class="editor-form" name="textArea"
-										v-model="textArea"></textarea>
+										<textarea class="editor-form" id = "minutes-textarea" name="textArea"
+											v-model="textArea"></textarea>
 								</div>
 
 								<!-- <label>解析対象
@@ -196,7 +187,7 @@ text {
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-						<button type="button" class="btn btn-primary text-strage-btn">変更を保存</button>
+						<button type="button" class="btn btn-primary" id = "text-strage-btn">変更を保存</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -209,7 +200,8 @@ text {
 	</div>
 
 
-<div class = "credit">credit "This software includes the work that is distributed in the Apache License 2.0"</div>
+	<div class="credit">credit "This software includes the work that
+		is distributed in the Apache License 2.0"</div>
 
 
 
