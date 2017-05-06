@@ -35,7 +35,6 @@ textarea {
 
 .editor-sidemenu {
 	list-style-type: none;
-	padding: 8px 16px 8px 16px;
 }
 
 ::-webkit-input-placeholder {
@@ -71,7 +70,8 @@ textarea {
 	min-height: 688px;
 	border: 1px solid;
 	min-width: 250px;
-	overflow-y: scroll;
+	background-color: #fff;
+	overflow-y: auto;
 }
 
 .element-area {
@@ -114,7 +114,7 @@ textarea {
 }
 
 .upload-minutes {
-
+	margin-left: 190px;
 }
 
 .dummy-position {
@@ -126,7 +126,7 @@ textarea {
 }
 
 .new-dummy-position {
-	margin-left: 708px;
+	margin-left: 712px;
 }
 
 .header-title-area {
@@ -143,4 +143,37 @@ textarea {
 
 .validate-form {
 	display: block !important;
+}
+
+body {
+	overflow: hidden;
+	background-color: #F0F1F2;
+}
+
+.header-option {
+	display: flex;
+}
+
+.watch-area {
+	display: none;
+	position: absolute;
+	margin-left: 646px;
+}
+
+.sidemenu-css {
+
+}
+
+.sidemenu-list {
+	cursor: pointer;
+	padding: 8px 16px 8px 16px;
+	margin: 0px 0px 0px -40px;
+}
+
+.sidemenu-list:hover {
+	background-color: blue;
+}
+
+.linedwrap {
+	background-color: #fff !important;
 }

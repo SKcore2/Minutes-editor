@@ -34,6 +34,10 @@
 <script src="js/jquery-linedtextarea.js"></script>
 <link href="css/jquery-linedtextarea.css" type="text/css"rel="stylesheet" />
 <script src="js/encoding.js"></script>
+<script src="js/sidemenu.js"></script>
+<script src="js/stopwatch.js"></script>
+
+
 
 </head>
 <body>
@@ -49,6 +53,12 @@
 				<div class="header-option">
 					<div class="dummy-file-btn btn btn-default dummy-position">ファイルを選択</div>
 					<input type="file" id="selfile" class="reading-btn undisplay">
+					<div class = "watch-area">
+					<form name="myForm">
+<input type="text" size="28" name="myFormTime">
+<div class = "btn btn-default"id ="watch-btn" onclick="myCheck()">start</div>
+</form>
+</div>
 					<div
 						class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
 					<input type="file" id="new-selfile" class="reading-btn undisplay">
@@ -59,9 +69,8 @@
 				<div id="demo" class="row minutes-editor-area">
 
 					<div class="origin-sidemenu-area">
-						<ul class="editor-sidemenu">
-							<li>ストップウォッチ</li>
-							<li>設定</li>
+						<ul class="editor-sidemenu sidemenu-css">
+							<li class = "sidemenu-list">設定</li>
 						</ul>
 					</div>
 
@@ -71,7 +80,7 @@
 						<div class="title-field">
 
 							<input class="editor-title origin-editor-title readonly"
-								placeholder="タイトル" readonly></input>
+								placeholder="下書きを取り込んでください" readonly></input>
 						</div>
 
 						<form name="test">
@@ -80,9 +89,10 @@
 						</form>
 					</div>
 					<div class="editor-sidemenu-area">
-						<ul class="editor-sidemenu">
-							<li>ストップウォッチ</li>
-							<li>設定</li>
+						<ul class="editor-sidemenu sidemenu-css">
+							<li class = "sidemenu-list read-format">フォーマット</li>
+							<li class = "sidemenu-list option-watch">ストップウォッチ</li>
+							<li class = "sidemenu-list">設定</li>
 						</ul>
 					</div>
 
@@ -203,6 +213,7 @@
 
 
 	</div>
+
 
 
 	<div class="credit">credit "This software includes the work that

@@ -20,19 +20,6 @@
 		this.$element_ = $(".contents-root");
 		this.bindEvents_();
 	}
-	Editor.prototype.exitDocument = function() {
-		if (!this.$element_) {
-			return;
-		}
-		if (this.events_.length > 0) {
-			$.each(this.events_, function(idx, args) {
-				this.$element_.off.apply(this.$element_, args);
-			}.bind(this));
-			this.events_ = [];
-		}
-		this.unbindEvents_();
-		this.$element_ = null;
-	}
 
 	Editor.prototype.exitDocument = function() {
 		if (!this.$element_) {
@@ -56,10 +43,6 @@
 		this.$element_.on('click', '.save-file-btn',this.clickSaveBtn_.bind(this));
 		this.$element_.on('beforeunload',this.beforUnloadEvent_.bind(this));
 
-	}
-
-	Editor.prototype.titleClick_ = function() {
-		window.alert("test");
 	}
 
 	Editor.prototype.keydownFunction_ = function(e) {
@@ -92,13 +75,27 @@
 	}
 
 	Editor.prototype.checkData = function(textData, confirmed) {
+		var status = null;
 		if (confirmed === true) {
 			this.saveTextData_(textData);
 		} else {
-			if (textData.title === "" || textData.text === "") {
-				this.showConfirmDialog_(textData);
+
+			if (textData.title === "" && textData.text === "") {
+				status = "both";
+				this.showConfirmDialog_(textData, status);
 				event.stopPropagation();
-			} else {
+			}
+			else if(textData.title === ""){
+				status = "title";
+				this.showConfirmDialog_(textData, status);
+				event.stopPropagation();
+			}
+			else if(textData.text === ""){
+				status = "text"
+				this.showConfirmDialog_(textData, status);
+				event.stopPropagation();
+			}
+			else {
 				this.saveTextData_(textData);
 			}
 		}
@@ -131,8 +128,20 @@
 		event.stopPropagation();
 	}
 
-	Editor.prototype.showConfirmDialog_ = function(textData) {
+	Editor.prototype.showConfirmDialog_ = function(textData, status) {
 		$('#staticModal').modal('show');
+		if(status === "both"){
+			$(".confirm-text").text("何も入力されていませんがよろしいでしょうか？")
+		}
+		else if(status === "title"){
+			$(".confirm-text").text("タイトルが入力されていませんが保存してもいいでしょうか？")
+
+		}
+		else if(status === "text"){
+
+			$(".confirm-text").text("本文が入力されていませんが保存してもいいでしょうか？")
+		}
+
 		var strage = document.getElementById("text-strage-btn");
 		$("#text-strage-btn").unbind('click')
 		$("#text-strage-btn").bind('click',function(){
@@ -149,6 +158,7 @@
 	Editor.prototype.validateText_ = function(data) {
 		var lastPart = null;
 		this.initializeAlertarea_();
+		var lineNum = 1;
 
 		for (var i = 0; i < data.length; i++) {
 
@@ -158,11 +168,16 @@
 			var detailTwo = data[i].pos_detail_2;
 			var type = data[i].word_type;
 			var position = data[i].ward_position;
-			;
+
+
 			if (type === 'UNKNOWN') {
 				if (part === '記号') {
+					if(word.match(/\r\n|\n/g)){
+						var num = word.match(/\r\n|\n/g).length;
+						lineNum = lineNum + num ;
+					}
 				} else {
-					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span></li>')
+					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 
 				}
 
@@ -170,17 +185,17 @@
 				if (part === '記号') {
 
 					if (detail === 'アルファベット') {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-info">アルファベットが含まれています。</span></li>')
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-info">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 					} else if (detail === '句点' && lastPart === '動詞') {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span></li>')
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 					}
 				} else if (part === '動詞') {
 					if (lastPart === "動詞") {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span></li>')
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 					} else if (detail === '非自立') {
 						if (lastPart === '名詞') {
 							$(".alert-list").append(
-									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span></li>')
+									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						}
 					}
 
