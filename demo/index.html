@@ -31,25 +31,27 @@
 <script src="bower_components/foundation/js/vendor/fastclick.js"></script>
 <script src="bower_components/foundation/js/foundation.min.js"></script>
 <script src="kuromoji/build/kuromoji.js"></script>
-	<script src="js/jquery-linedtextarea.js"></script>
-	<link href="css/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-linedtextarea.js"></script>
+<link href="css/jquery-linedtextarea.css" type="text/css"rel="stylesheet" />
+<script src="js/encoding.js"></script>
 
 </head>
 <body>
+		<div class="header-title-area">
+				<h1>議事録えでぃた～</h1>
+			</div>
 	<div class="contents-root">
 		<div class="element-area">
 
-<div class = "header-title-area">
-<h1>議事録えでぃた～</h1>
-</div>
+
 			<div class="small-12 columns">
 
 				<div class="header-option">
 					<div class="dummy-file-btn btn btn-default dummy-position">ファイルを選択</div>
 					<input type="file" id="selfile" class="reading-btn undisplay">
-					<div class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
-					<input type="file" id="new-selfile"
-						class="reading-btn undisplay">
+					<div
+						class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
+					<input type="file" id="new-selfile" class="reading-btn undisplay">
 					<div class="btn btn-default save-file-btn">保存する</div>
 					<div class="btn btn-primary upload-minutes">議事録をアップする</div>
 				</div>
@@ -89,7 +91,8 @@
 						<div class="large-12 columns">
 							<div class="title-field">
 
-								<input class="editor-title minutes-editor-title" placeholder="タイトルを記入してください"></input>
+								<input class="editor-title minutes-editor-title"
+									placeholder="タイトルを記入してください"></input>
 							</div>
 
 
@@ -97,12 +100,12 @@
 							<form v-show="!isLoading" class="validate-form">
 
 								<div class="editor-field">
-										<textarea class="editor-form lined" id = "minutes-textarea" name="textArea"
-											v-model="textArea" row = "30"></textarea>
+									<textarea class="editor-form lined" id="minutes-textarea"
+										name="textArea" v-model="textArea" row="30"></textarea>
 								</div>
 								<div v-show="isLoading" data-alert="" class="alert-box radius">
-								<div v-text="message"></div>
-							</div>
+									<div v-text="message"></div>
+								</div>
 
 								<!-- <label>解析対象
                         <input type="text" placeholder="解析したい文字列を入力してください"
@@ -189,7 +192,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-						<button type="button" class="btn btn-primary" id = "text-strage-btn">変更を保存</button>
+						<button type="button" class="btn btn-primary" id="text-strage-btn">変更を保存</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -211,9 +214,9 @@
 	<script>
 		$(document).foundation();
 		$(function() {
-			$(".lined").linedtextarea(
-				{selectedLine: 1}
-			);
+			$(".lined").linedtextarea({
+				selectedLine : 1
+			});
 		});
 	</script>
 </body>

@@ -114,7 +114,7 @@
 		}
 		else if (textData.title === "") {
 			textData = {
-				text : "",
+				text : textData.text,
 				title : "無題"
 			}
 
@@ -209,14 +209,33 @@
 
 		  //FileReaderの作成
 		  var reader = new FileReader();
-		  //テキスト形式で読み込む
-		  reader.readAsText(file[0]);
+
+		    reader.readAsArrayBuffer(file[0]);
 
 		  //読込終了後の処理
 		  reader.onload = function(ev){
+			    var array = new Uint8Array(reader.result);
+
+			    // 文字コードを取得
+			    switch (Encoding.detect(array)) {
+			    case 'UTF16':
+			        // 16ビット符号なし整数値配列と見なす
+			        array = new Uint16Array(e.target.result);
+			        break;
+			    case 'UTF32':
+			        // 32ビット符号なし整数値配列と見なす
+			        array = new Uint32Array(e.target.result);
+			        break;
+			    }
+
+			    // Unicodeの数値配列に変換
+			    var unicodeArray = Encoding.convert(array, 'UNICODE');
+			    // Unicodeの数値配列を文字列に変換
+			    var text = Encoding.codeToString(unicodeArray);
+
 		    //テキストエリアに表示する
 			$(".origin-editor-title").val(file[0].name);
-		    document.test.txt.value = reader.result;
+		    document.test.txt.value = text;
 		  }
 		},false);
 
@@ -227,13 +246,31 @@
 			  //FileReaderの作成
 			  var reader = new FileReader();
 			  //テキスト形式で読み込む
-			  reader.readAsText(file[0]);
+			   reader.readAsArrayBuffer(file[0]);
 
 			  //読込終了後の処理
 			  reader.onload = function(ev){
+				  var array = new Uint8Array(reader.result);
+
+				    // 文字コードを取得
+				    switch (Encoding.detect(array)) {
+				    case 'UTF16':
+				        // 16ビット符号なし整数値配列と見なす
+				        array = new Uint16Array(e.target.result);
+				        break;
+				    case 'UTF32':
+				        // 32ビット符号なし整数値配列と見なす
+				        array = new Uint32Array(e.target.result);
+				        break;
+				    }
+
+				    // Unicodeの数値配列に変換
+				    var unicodeArray = Encoding.convert(array, 'UNICODE');
+				    // Unicodeの数値配列を文字列に変換
+				    var text = Encoding.codeToString(unicodeArray);
 			    //テキストエリアに表示する
 				$(".minutes-editor-title").val(file[0].name);
-			    $("#minutes-textarea").val(reader.result);
+			    $("#minutes-textarea").val(text);
 			  }
 			},false);
 

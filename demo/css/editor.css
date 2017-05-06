@@ -2,13 +2,13 @@
 
 .editor-form {
 	min-height: 654px;
-	width: 500px;
-	min-width: 420px;
+	width: 548px;
+	min-width: 420px;;
 	display: block !important;
 }
 
 .editor-title {
-	min-width: 500px;
+	min-width: 548px;
 }
 
 .editor-field {
@@ -60,7 +60,7 @@ textarea {
 }
 
 .contents-root {
-	margin-left: 128px;
+	margin-left: 88px;
 }
 
 .validate-editor-area {
@@ -88,7 +88,7 @@ textarea {
 }
 
 .origin-editor-area {
-	min-width: 482px;
+	min-width: 548px;
 }
 
 .origin-sidemenu-area {
@@ -126,14 +126,13 @@ textarea {
 }
 
 .new-dummy-position {
-	margin-left: 660px;
+	margin-left: 708px;
 }
 
 .header-title-area {
 	background-color: #333;
 	color: #fff;
 	padding: 1px;
-	margin: 0px -128px 0px;
 	min-width: 1968px;
 }
 
