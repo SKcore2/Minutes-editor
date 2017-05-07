@@ -43,7 +43,7 @@
 		this.$element_.on('click', '.dummy-file-btn',this.clickFilebtn_.bind(this));
 		this.$element_.on('click', '.save-file-btn',this.clickSaveBtn_.bind(this));
 		this.$element_.on('beforeunload',this.beforUnloadEvent_.bind(this));
-
+		this.$element_.on('click','.upload-minutes',this.uploadEvent_.bind(this));
 	}
 
 	Editor.prototype.keydownFunction_ = function(e) {
@@ -345,6 +345,10 @@
 	}
 	Editor.prototype.beforUnloadEvent_ = function(){
 
+	}
+
+	Editor.prototype.uploadEvent_ = function(){
+		window.open('https://mail.worksap.co.jp/webmail2/');
 	}
 	Editor.prototype.enterDocument();
 
