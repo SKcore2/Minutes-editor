@@ -64,6 +64,7 @@ var vm = new Vue({
 
 // フォームの内容が変化したらtokenizeする
 vm.$watch("textArea", function (value) {
+	var text = null;
     // vm.graphEnabled = false;
     vm.svgStyle = "hidden";
     vm.inputText = value;

@@ -17,6 +17,7 @@
 	};
 
 	Editor.prototype.enterDocument = function() {
+		sessionStorage.clear();
 		this.$element_ = $(".contents-root");
 		this.bindEvents_();
 	}
@@ -157,10 +158,15 @@
 
 	Editor.prototype.validateText_ = function(data) {
 		var lastPart = null;
+		var lastDetail = null;
+		var lastDetailTwo = null;
+		var count = 0
 		this.initializeAlertarea_();
 		var lineNum = 1;
+		var i = 0
 
-		for (var i = 0; i < data.length; i++) {
+
+		while (i <data.length) {
 
 			var part = data[i].pos;
 			var word = data[i].surface_form;
@@ -176,7 +182,11 @@
 						var num = word.match(/\r\n|\n/g).length;
 						lineNum = lineNum + num ;
 					}
-				} else {
+				}
+				else if(word.match("-")){
+
+				}
+				else {
 					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 
 				}
@@ -198,14 +208,43 @@
 									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						}
 					}
+					else if(lastDetailTwo === '人名'){
+						$(".alert-list").append(
+								'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+					}
 
-				} else if (part === '名刺') {
+				} else if (part === '名詞') {
+					if(detail === '固有名詞'){
+						if(detailTwo === '人名'){
+							$(".alert-list").append(
+									'<li class  ="validate-label"><span class = "label label-info">人名が含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						}
+					}
 
 				}
 			}
 			lastPart = part;
+			lastDetail = detail;
+			lastDetailTwo = detailTwo;
+			i=(i+1)|0
+
 
 		}
+	}
+
+	Editor.prototype.getStorageItem_ = function(count){
+		var allData = JSON.parse(sessionStorage.getItem(count + "allData"))
+		if(allData == null){
+			if(count== 0){
+				return 1;
+			}
+			else{
+
+			return ;
+			}
+		}
+		count++;
+		this.getStorageItem_(count);
 	}
 
 	Editor.prototype.initializeAlertarea_ = function() {

@@ -177,3 +177,11 @@ body {
 .linedwrap {
 	background-color: #fff !important;
 }
+
+.page-title {
+	margin-left: 74px;
+}
+
+.validate-label:first-child {
+	margin-top: 8px;
+}
