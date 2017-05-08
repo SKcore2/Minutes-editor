@@ -160,6 +160,7 @@
 		var lastPart = null;
 		var lastDetail = null;
 		var lastDetailTwo = null;
+		var lastType = null;
 		var count = 0
 		this.initializeAlertarea_();
 		var lineNum = 1;
