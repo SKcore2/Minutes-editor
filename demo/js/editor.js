@@ -187,8 +187,9 @@
 
 				}
 				else {
+					if(lastType !== 'UNKNOWN'){
 					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-
+					}
 				}
 
 			} else if (type == 'KNOWN') {
@@ -223,6 +224,7 @@
 
 				}
 			}
+			lastType = type;
 			lastPart = part;
 			lastDetail = detail;
 			lastDetailTwo = detailTwo;
