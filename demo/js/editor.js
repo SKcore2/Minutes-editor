@@ -161,6 +161,8 @@
 		var lastDetail = null;
 		var lastDetailTwo = null;
 		var lastType = null;
+		var lastValidate = null;
+		var lastLineNum = null;
 		var count = 0
 		this.initializeAlertarea_();
 		var lineNum = 1;
@@ -189,7 +191,10 @@
 				}
 				else {
 					if(lastType !== 'UNKNOWN'){
+					  if(lastValidate !== 'unknown' && lastLineNum === lineNum){
 					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+					lastValidate = 'unknown';
+					  }
 					}
 				}
 
@@ -229,6 +234,7 @@
 			lastPart = part;
 			lastDetail = detail;
 			lastDetailTwo = detailTwo;
+			lastLineNum = lineNum;
 			i=(i+1)|0
 
 
