@@ -354,7 +354,7 @@
 	}
 
 	Editor.prototype.uploadEvent_ = function(){
-		window.open('https://mail.worksap.co.jp/webmail2/');
+		//window.open('https://mail.worksap.co.jp/webmail2/');
 	}
 	Editor.prototype.enterDocument();
 
