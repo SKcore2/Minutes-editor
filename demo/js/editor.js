@@ -205,7 +205,7 @@
 					}
 				} else if (part === '動詞') {
 					if (lastPart === "動詞") {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+//						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 //					} else if (detail === '非自立') {
 //						if (lastPart === '名詞') {
 //							$(".alert-list").append(
@@ -354,7 +354,7 @@
 	}
 
 	Editor.prototype.uploadEvent_ = function(){
-		//window.open('https://mail.worksap.co.jp/webmail2/');
+
 	}
 	Editor.prototype.enterDocument();
 
