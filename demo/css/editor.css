@@ -185,3 +185,7 @@ body {
 .validate-label:first-child {
 	margin-top: 8px;
 }
+
+.yellow{
+	background-color: yellow;
+}

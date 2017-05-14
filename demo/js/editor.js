@@ -160,6 +160,9 @@
 		var lastPart = null;
 		var lastDetail = null;
 		var lastDetailTwo = null;
+		var lastType = null;
+		var lastValidate = null;
+		var lastLineNum = null;
 		var count = 0
 		this.initializeAlertarea_();
 		var lineNum = 1;
@@ -186,46 +189,60 @@
 				else if(word.match("-")){
 
 				}
-				else {
-					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+				else if(!isNaN(word)){
 
+				}
+				else {
+					if(lastType !== 'UNKNOWN'){
+					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+					$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					}
 				}
 
 			} else if (type == 'KNOWN') {
 				if (part === '記号') {
 
 					if (detail === 'アルファベット') {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-info">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-					} else if (detail === '句点' && lastPart === '動詞') {
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					} else if (lastDetail === '句点') {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					}
+					else if (lastDetailTwo === '人名') {
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
 				} else if (part === '動詞') {
 					if (lastPart === "動詞") {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-					} else if (detail === '非自立') {
-						if (lastPart === '名詞') {
-							$(".alert-list").append(
-									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-						}
+//						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+//					} else if (detail === '非自立') {
+//						if (lastPart === '名詞') {
+//							$(".alert-list").append(
+//									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+//						}
 					}
 					else if(lastDetailTwo === '人名'){
 						$(".alert-list").append(
-								'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+							'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+							$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
 
 				} else if (part === '名詞') {
 					if(detail === '固有名詞'){
 						if(detailTwo === '人名'){
-							$(".alert-list").append(
-									'<li class  ="validate-label"><span class = "label label-info">人名が含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+							//$(".alert-list").append(
+								//	'<li class  ="validate-label"><span class = "label label-info">人名が含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						}
 					}
 
 				}
 			}
+			lastType = type;
 			lastPart = part;
 			lastDetail = detail;
 			lastDetailTwo = detailTwo;
+			lastLineNum = lineNum;
 			i=(i+1)|0
 
 
@@ -249,6 +266,7 @@
 
 	Editor.prototype.initializeAlertarea_ = function() {
 		$(".alert-list").children("li").remove();
+		$(".minutes-lines").removeClass("yellow");
 	}
 
 	Editor.prototype.readingText_ = function(){
@@ -348,7 +366,7 @@
 	}
 
 	Editor.prototype.uploadEvent_ = function(){
-		window.open('https://mail.worksap.co.jp/webmail2/');
+
 	}
 	Editor.prototype.enterDocument();
 
