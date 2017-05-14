@@ -266,6 +266,8 @@
 
 	Editor.prototype.initializeAlertarea_ = function() {
 		$(".alert-list").children("li").remove();
+		$("#minutes-textarea").parents(".editor-field").find(".lineno").addClass("minutes-lines")
+
 		$(".minutes-lines").removeClass("yellow");
 	}
 
