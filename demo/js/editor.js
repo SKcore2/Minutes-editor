@@ -193,10 +193,10 @@
 
 				}
 				else {
-					if(lastType !== 'UNKNOWN'){
-					$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-					$(".minutes-lines").eq(lineNum-1).addClass("yellow");
-					}
+					//if(lastType !== 'UNKNOWN'){
+					//$(".alert-list").append('<li class ="validate-label"><span class = "label label-danger">辞書に登録されていない文字です。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+					//$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					//}
 				}
 
 			} else if (type == 'KNOWN') {
@@ -205,11 +205,8 @@
 					if (detail === 'アルファベット') {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
-					} else if (lastDetail === '句点') {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
-						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
-					}
-					else if (lastDetailTwo === '人名') {
+					} else if (detail === '句点') {
+					if (lastDetail === '句点' || lastDetail === '人名') {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
