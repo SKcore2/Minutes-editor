@@ -206,9 +206,10 @@
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					} else if (detail === '句点') {
-					if (lastDetail === '句点' || lastDetail === '人名') {
+						if (lastDetail === '句点' || lastDetail === '人名') {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+						}
 					}
 				} else if (part === '動詞') {
 					if (lastPart === "動詞") {
@@ -234,6 +235,7 @@
 					}
 
 				}
+
 			}
 			lastType = type;
 			lastPart = part;
