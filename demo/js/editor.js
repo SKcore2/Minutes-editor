@@ -203,7 +203,7 @@
 				if (part === '記号') {
 
 					if (detail === 'アルファベット') {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-danger">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					} else if (detail === '句点') {
 						if (lastDetail === '句点' || lastDetailTwo === '人名') {
@@ -212,7 +212,12 @@
 						}
 					}
 				} else if (part === '動詞') {
-					if (lastPart === "動詞") {
+					if(detail === '接尾'){
+						$(".alert-list").append(
+								'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+								$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					}
+					else if (lastPart === "動詞") {
 //						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 //					} else if (detail === '非自立') {
 //						if (lastPart === '名詞') {
