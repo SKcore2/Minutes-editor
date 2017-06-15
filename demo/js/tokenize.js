@@ -68,11 +68,12 @@ vm.$watch("textArea", function (value) {
     // vm.graphEnabled = false;
     vm.svgStyle = "hidden";
     vm.inputText = value;
+	 $('.alert-form').animate({scrollTop: $('.alert-form')[0].scrollHeight}, 'fast');
+
     setTimeout(function(){
     vm.tokenize();
     Editor.prototype.validateText_(vm.tokens);
     },5)
-	 $('.alert-form').animate({scrollTop: $('.alert-form')[0].scrollHeight}, 'fast');
 })
 
 

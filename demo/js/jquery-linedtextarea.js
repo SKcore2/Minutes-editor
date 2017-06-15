@@ -60,7 +60,7 @@
 			var textarea = $(this);
 
 			/* Turn off the wrapping of as we don't want to screw up the line numbers */
-			textarea.attr("wrap", "off");
+			$("#minutes-textarea").attr("wrap", "off");
 			textarea.css({resize:'none'});
 			var originalTextAreaWidth	= textarea.outerWidth();
 

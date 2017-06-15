@@ -157,6 +157,20 @@
 	}
 
 	Editor.prototype.validateText_ = function(data) {
+		var partList =  	{
+			varb:'動詞',
+			symbol:'記号',
+			noun:'名詞',
+			filler: 'フィラー'
+		};
+
+		var detailList = {
+			alphabet:'アルファベット',
+			punctuation:'句点',
+			properNoun:'固有名詞',
+			name :'人名'
+		}
+
 		var lastPart = null;
 		var lastDetail = null;
 		var lastDetailTwo = null;
@@ -180,7 +194,7 @@
 
 
 			if (type === 'UNKNOWN') {
-				if (part === '記号') {
+				if (part === partList["symbol"]) {
 					if(word.match(/\r\n|\n/g)){
 						var num = word.match(/\r\n|\n/g).length;
 						lineNum = lineNum + num ;
@@ -200,19 +214,19 @@
 				}
 
 			} else if (type == 'KNOWN') {
-				if (part === '記号') {
+				if (part === partList["symbol"]) {
 
-					if (detail === 'アルファベット') {
+					if (detail === detailList["alphabet"]) {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-danger">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
-					} else if (detail === '句点') {
-						if (lastDetail === '句点' || lastDetailTwo === '人名') {
+					} else if (detail === detailList["punctuation"]) {
+						if (lastDetail === detailList["punctuation"] || lastDetailTwo === detailList[name]) {
 						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 						}
 					}
-				} else if (part === '動詞') {
-					if (lastPart === "動詞") {
+				} else if (part === partList["verb"]) {
+					if (lastPart === partList["verb"]) {
 //						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">動詞が続いています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 //					} else if (detail === '非自立') {
 //						if (lastPart === '名詞') {
@@ -220,21 +234,30 @@
 //									'<li class  ="validate-label"><span class = "label label-warning">名詞の後に非自立品詞が入っています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 //						}
 					}
-					else if(lastDetailTwo === '人名'){
+					else if(lastDetailTwo === detailList["punctuation"]){
 						$(".alert-list").append(
 							'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 							$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
 
-				} else if (part === '名詞') {
-					if(detail === '固有名詞'){
-						if(detailTwo === '人名'){
+				} else if (part === partList["noun"]) {
+					if(detail === detailList["properNoun"]){
+						if(detailTwo === detailList["name"]){
 							//$(".alert-list").append(
 								//	'<li class  ="validate-label"><span class = "label label-info">人名が含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						}
 					}
-
+//					else if(detail === '接尾'){
+//						$(".alert-list").append(
+//								'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+//								$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+//					}
 				}
+				 else if (part === partList["filler"]) {
+						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					}
+
 
 			}
 			lastType = type;
@@ -346,8 +369,6 @@
 			    $("#minutes-textarea").val(text);
 			  }
 			},false);
-
-
 	}
 
 	Editor.prototype.clickFilebtn_ = function(e) {
@@ -360,7 +381,13 @@
 		}
 	}
 	Editor.prototype.clickSaveBtn_ = function(e) {
+		var target = e.target;
+		if($(target).hasClass("format-seve-btn")){
+		Sidemenu.prototype.saveFormat();
+		}
+		else{
 		var textData = this.inputTextData_(textData);
+		}
 	}
 	Editor.prototype.beforUnloadEvent_ = function(){
 
