@@ -87,13 +87,12 @@
 		$('#formatModal').modal('hide');
 		$(".hidden-menu").slideDown();
 		this.changeFormatMode_();
-		this.newLineFormat_();
 	}
 
 	Sidemenu.prototype.saveFormat = function() {
 		var title = $(".minutes-editor-title").val()
 		var text = $("#minutes-textarea").val()
-		var lineNo = $(".create-format").index()
+		var lineNo = $(".create-format:last").index()
 		var formatKey;
 		text = text.split("<").join("&lt;");
 		text = text.split(">").join("&gt;");
@@ -120,7 +119,8 @@
 	Sidemenu.prototype.removeFormat_ = function(e) {
 		var target = e.target;
 		var index = $(".create-format").index()
-		localStorage.clear();
+		var key = $(target).parents(".create-format").data('key');
+		localStorage.removeItem(key);
 		this.deleteLineFormat_(target);
 	}
 
@@ -144,8 +144,9 @@
 		var lineNo = 0;
 		var formatKey = "format" + lineNo;
 		var format = localStorage.getItem(formatKey);
+		var lollength = localStorage.length;
 
-		while (format !== null) {
+		for (var i = 0; i <= localStorage.length; i++){
 			this.initialReadFormat_(format,lineNo,formatKey);
 			lineNo++;
 			formatKey = "format" + lineNo;

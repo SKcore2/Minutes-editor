@@ -168,7 +168,8 @@
 			alphabet:'アルファベット',
 			punctuation:'句点',
 			properNoun:'固有名詞',
-			name :'人名'
+			name :'人名',
+			general : '一般'
 		}
 
 		var lastPart = null;
@@ -178,10 +179,11 @@
 		var lastValidate = null;
 		var lastLineNum = null;
 		var count = 0
-		this.initializeAlertarea_();
 		var lineNum = 1;
 		var i = 0
+		var alertList = $(".alert-list");
 
+		this.initializeAlertarea_();
 
 		while (i <data.length) {
 
@@ -203,6 +205,12 @@
 				else if(word.match("-")){
 
 				}
+				else if (part === partList["noun"]) {
+					if(detail === detailList["general"]){
+//					alertList.append('<li class  ="validate-label"><span class = "label label-info">辞書にない単語が含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+//					$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					}
+				}
 				else if(!isNaN(word)){
 
 				}
@@ -217,11 +225,11 @@
 				if (part === partList["symbol"]) {
 
 					if (detail === detailList["alphabet"]) {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-danger">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						alertList.append('<li class  ="validate-label"><span class = "label label-danger">アルファベットが含まれています。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					} else if (detail === detailList["punctuation"]) {
 						if (lastDetail === detailList["punctuation"] || lastDetailTwo === detailList[name]) {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+							alertList.append('<li class  ="validate-label"><span class = "label label-warning">句点の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 						}
 					}
@@ -235,7 +243,7 @@
 //						}
 					}
 					else if(lastDetailTwo === detailList["punctuation"]){
-						$(".alert-list").append(
+						alertList.append(
 							'<li class  ="validate-label"><span class = "label label-warning">動詞の位置がおかしい可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 							$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
@@ -254,7 +262,7 @@
 //					}
 				}
 				 else if (part === partList["filler"]) {
-						$(".alert-list").append('<li class  ="validate-label"><span class = "label label-warning">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+					 alertList.append('<li class  ="validate-label"><span class = "label label-warning">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
 
