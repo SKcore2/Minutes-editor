@@ -161,7 +161,8 @@
 			varb:'動詞',
 			symbol:'記号',
 			noun:'名詞',
-			filler: 'フィラー'
+			filler: 'フィラー',
+			adjective: '感動詞'
 		};
 
 		var detailList = {
@@ -265,6 +266,12 @@
 					 alertList.append('<li class  ="validate-label"><span class = "label label-warning">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
 						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
 					}
+				 else if (part === partList["adjective"]){
+					 if(word.substr(0,1) === word.substr(1,2)){
+					 alertList.append('<li class  ="validate-label"><span class = "label label-warning">表現が適切でない可能性があります。</span><span class = "line-number label label-default">' + lineNum  +  "行目" +  '</span></li>')
+						$(".minutes-lines").eq(lineNum-1).addClass("yellow");
+					 }
+				 }
 
 
 			}
