@@ -308,16 +308,14 @@
 						i = (i + 1) | 0
 
 					}
-				}), 10
+				}),1
 	};
 
 	Editor.prototype.addAlertLines = function(alertWord, alertColor, lineNum){
 		var alertList = $(".alert-list");
 		var minutesLines = $(".minutes-lines");
-		setTimeout(function(){
 		alertList.append('<li class  ="validate-label"><span class = "label label-' + alertColor + '">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">'+ lineNum + "行目"+ '</span></li>')
 minutesLines.eq(lineNum - 1).addClass("yellow");
-		},lineNum)
 	}
 
 	Editor.prototype.getStorageItem_ = function(count) {
