@@ -37,6 +37,7 @@
 		this.$element_.on('click', '#create-format-btn', this.createFormat_.bind(this));
 		this.$element_.on('click', '.remove-icon', this.removeFormat_.bind(this));
 		this.$element_.on('click', '.create-format', this.readFormatText_.bind(this));
+		this.$element_.on('click', '.toggle-origin-edit', this.toggleOriginEdit_.bind(this));
 	}
 
 	Sidemenu.prototype.watchAreaToggle_ = function() {
@@ -194,7 +195,18 @@
 		$("#minutes-textarea").val(format.text);
 	}
 
+	Sidemenu.prototype.toggleOriginEdit_ = function(){
+		var $btnText = $(".toggle-origin-edit")
 
+		$('.origin-editor-area').slideToggle();
+		$('.origin-sidemenu-area').slideToggle();
+		if($btnText.text() === "隠す"){
+			$btnText.text("表示する")
+		}
+			else{
+				$btnText.text("隠す")
+		}
+	}
 
 	Sidemenu.prototype.deleteLineFormat_ = function(target){
 	$(target).parents(".create-format").remove();

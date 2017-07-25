@@ -29,7 +29,7 @@ textarea {
 	color: #fff;
 	min-width: 160px;
 	float: left;
-	min-height: 688px;
+	min-height: 721px;
 	margin-left: 128px;
 }
 
@@ -67,7 +67,7 @@ textarea {
 }
 
 .alert-form {
-	min-height: 688px;
+	min-height: 722px;
 	border: 1px solid;
 	min-width: 250px;
 	background-color: #fff;
@@ -95,7 +95,7 @@ textarea {
 	background-color: #333;
 	color: #fff;
 	min-width: 160px;
-	min-height: 688px;
+	min-height: 721px;
 }
 
 .minutes-editor-area {
@@ -117,16 +117,8 @@ textarea {
 	margin-left: 190px;
 }
 
-.dummy-position {
-	margin-left: 144px;
-}
-
 .undisplay {
 	display: none !important;
-}
-
-.new-dummy-position {
-	margin-left: 712px;
 }
 
 .header-title-area {
@@ -186,16 +178,26 @@ body {
 	margin-top: 8px;
 }
 
-.yellow{
+.yellow {
 	background-color: yellow;
 }
 
-.hidden-menu{
-	display:none;
+.hidden-menu {
+	display: none;
 }
-.format-form{
-	box-shadow: 0 0 1px 0 rgba(255,153,0,1);
+
+.format-form {
+	box-shadow: 0 0 1px 0 rgba(255, 153, 0, 1);
 }
-.format-form:forcus{
-	  box-shadow: 0 0 1px 0 rgba(255,153,0,1);
+
+.format-form:forcus {
+	box-shadow: 0 0 1px 0 rgba(255, 153, 0, 1);
+}
+
+.header-option {
+	margin-bottom: 32px;
+}
+
+.header-area {
+	background-color: #333;
 }

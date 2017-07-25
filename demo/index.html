@@ -32,7 +32,8 @@
 <script src="bower_components/foundation/js/foundation.min.js"></script>
 <script src="kuromoji/build/kuromoji.js"></script>
 <script src="js/jquery-linedtextarea.js"></script>
-<link href="css/jquery-linedtextarea.css" type="text/css"rel="stylesheet" />
+<link href="css/jquery-linedtextarea.css" type="text/css"
+	rel="stylesheet" />
 <script src="js/encoding.js"></script>
 <script src="js/sidemenu.js"></script>
 <script src="js/stopwatch.js"></script>
@@ -41,28 +42,22 @@
 
 </head>
 <body>
-		<div class="header-title-area">
-				<h1 class = "page-title">議事録エディター</h1>
-			</div>
+	<div class="header-title-area">
+		<h1 class="page-title">議事録エディター</h1>
+	</div>
 	<div class="contents-root">
 		<div class="element-area">
 
 
 			<div class="small-12 columns">
-
+			<div class="btn btn-default toggle-origin-edit">隠す</div>
 				<div class="header-option">
-					<div class="dummy-file-btn btn btn-default dummy-position">ファイルを選択</div>
-					<input type="file" id="selfile" class="reading-btn undisplay">
-					<div class = "watch-area">
-					<form name="myForm">
-<input type="text" size="28" name="myFormTime">
-<div class = "btn btn-default"id ="watch-btn" onclick="myCheck()">start</div>
-</form>
-</div>
-					<div
-						class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
-					<input type="file" id="new-selfile" class="reading-btn undisplay">
-					<div class="btn btn-default save-file-btn">保存する</div>
+					<div class="watch-area">
+						<form name="myForm">
+							<input type="text" size="28" name="myFormTime">
+							<div class="btn btn-default" id="watch-btn" onclick="myCheck()">start</div>
+						</form>
+					</div>
 
 				</div>
 
@@ -76,6 +71,10 @@
 
 
 					<div class="origin-editor-area">
+						<div class="header-area">
+							<div class="dummy-file-btn btn btn-default dummy-position">ファイルを選択</div>
+							<input type="file" id="selfile" class="reading-btn undisplay">
+						</div>
 						<div class="title-field">
 
 							<input class="editor-title origin-editor-title readonly"
@@ -83,19 +82,37 @@
 						</div>
 
 						<form name="test">
-							<textarea name="txt" rows="10" cols="50" id = "readonly-textarea"
+							<textarea name="txt" rows="10" cols="50" id="readonly-textarea"
 								class="editor-form readonly lined" readonly></textarea>
 						</form>
 					</div>
+
+
+
+
+
+
 					<div class="editor-sidemenu-area">
+
 						<ul class="editor-sidemenu sidemenu-css">
-							<li class = "sidemenu-list read-format">フォーマット<span class = "glyphicon glyphicon-chevron-down side-dropdown-menu"></span><span class = "glyphicon glyphicon-plus create-format-icon"></span></li>
-							<li class = "sidemenu-list option-watch">ストップウォッチ</li>
+							<li class="sidemenu-list read-format">フォーマット<span
+								class="glyphicon glyphicon-chevron-down side-dropdown-menu"></span><span
+								class="glyphicon glyphicon-plus create-format-icon"></span></li>
+							<li class="sidemenu-list option-watch">ストップウォッチ</li>
 						</ul>
 					</div>
 
 
+
+
+
+
 					<div class="validate-editor-area">
+			 <div class = "header-area">
+							<div class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
+							<input type="file" id="new-selfile" class="reading-btn undisplay">
+							<div class="btn btn-default save-file-btn">保存する</div>
+						</div>
 						<div class="large-12 columns">
 							<div class="title-field">
 
@@ -114,7 +131,7 @@
 								<div v-show="isLoading" data-alert="" class="alert-box radius">
 									<div v-text="message"></div>
 								</div>
-<!--
+								<!--
 								<label>解析対象
                         <input type="text" placeholder="解析したい文字列を入力してください"
                                v-model="inputText" />
@@ -226,7 +243,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-						<button type="button" class="btn btn-primary" id="create-format-btn">作成する</button>
+						<button type="button" class="btn btn-primary"
+							id="create-format-btn">作成する</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -239,8 +257,8 @@
 
 
 
-	<div class="credit">This software includes the work that
-		is distributed in the Apache License 2.0"</div>
+	<div class="credit">This software includes the work that is
+		distributed in the Apache License 2.0"</div>
 
 
 
