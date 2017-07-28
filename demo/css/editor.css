@@ -15,9 +15,6 @@
 
 }
 
-textarea {
-	resize: none;
-}
 
 .title-field {
 	display: flex;
@@ -83,9 +80,6 @@ textarea {
 	padding: 0;
 }
 
-.validate-form {
-	max-width: 548px;
-}
 
 .origin-editor-area {
 	min-width: 548px;

@@ -108,12 +108,12 @@
 		localStorage.setItem("format" + lineNo, JSON.stringify(format));
 		}
 		else{
-			localStorage.setItem("format" + lineNo, JSON.stringify(format));
+			localStorage.setItem("format" + LineNo, JSON.stringify(format));
 		}
-		formatKey = "format" + lineNo;
+		formatKey = "format" + LineNo;
 		window.alert("フォーマットを保存しました")
 		this.changeFormatMode_();
-		this.newLineFormat_(format,lineNo,formatKey);
+		this.newLineFormat_(format,LineNo,formatKey);
 	}
 
 

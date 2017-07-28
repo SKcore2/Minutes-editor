@@ -61,12 +61,12 @@
 
 			/* Turn off the wrapping of as we don't want to screw up the line numbers */
 			$("#minutes-textarea").attr("wrap", "off");
-			textarea.css({resize:'none'});
+			//textarea.css({resize:'none'});
 			var originalTextAreaWidth	= textarea.outerWidth();
 
 			/* Wrap the text area in the elements we need */
 			textarea.wrap("<div class='linedtextarea'></div>");
-			var linedTextAreaDiv	= textarea.parent().wrap("<div class='linedwrap' style='width:" + originalTextAreaWidth + "px'></div>");
+			var linedTextAreaDiv	= textarea.parent().wrap("<div class='linedwrap' style='min-width:" + originalTextAreaWidth + "px'></div>");
 			var linedWrapDiv 			= linedTextAreaDiv.parent();
 
 			linedWrapDiv.prepend("<div class='lines' style='width:50px'></div>");
@@ -95,7 +95,7 @@
 			var textareaNewWidth			= originalTextAreaWidth - sidebarWidth - paddingHorizontal - 20;
 
 			textarea.width( textareaNewWidth );
-			linedWrapDiv.width( linedWrapDivNewWidth );
+			//linedWrapDiv.width( linedWrapDivNewWidth );
 
 
 
