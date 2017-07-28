@@ -16,7 +16,6 @@
 
 }
 
-
 .title-field {
 	display: flex;
 	min-width: 250px;
@@ -72,15 +71,10 @@
 	overflow-y: auto;
 }
 
-.element-area {
-	max-width: 1820px;
-}
-
 .alert-list {
 	list-style-type: none;
 	padding: 0;
 }
-
 
 .origin-editor-area {
 	min-width: 548px;
@@ -135,6 +129,7 @@
 body {
 	overflow: hidden;
 	background-color: #F0F1F2;
+	min-width: 3600px;
 }
 
 .header-option {
