@@ -453,9 +453,7 @@
 
 	}
 
-	Editor.prototype.stampEvent_ = function() {
-		window.open('//ckip.worksap.co.jp/cws/cws/srwtimerec')
-	}
+
 
 	Editor.prototype.enterDocument();
 
