@@ -49,6 +49,7 @@
 		this.$element_.on('beforeunload', this.beforUnloadEvent_.bind(this));
 		this.$element_.on('click', '.upload-minutes', this.uploadEvent_
 				.bind(this));
+		this.$element_.on('click', '.stamp-btn', this.stampEvent_.bind(this));
 	}
 
 	Editor.prototype.keydownFunction_ = function(e) {
@@ -233,14 +234,17 @@
 								if (detail === detailList["alphabet"]) {
 									alertWord = 'アルファベットが含まれています。'
 									alertColor = 'danger'
-										Editor.prototype.addAlertLines(alertWord, alertColor, lineNum);
+									Editor.prototype.addAlertLines(alertWord,
+											alertColor, lineNum);
 
 								} else if (detail === detailList["punctuation"]) {
-									if (lastDetail === detailList["punctuation"] || lastDetailTwo === detailList[name]) {
+									if (lastDetail === detailList["punctuation"]
+											|| lastDetailTwo === detailList[name]) {
 										alertWord = '句点の位置がおかしい可能性があります。'
-											alertColor = 'warning'
-												Editor.prototype.addAlertLines(alertWord, alertColor, lineNum);
-										}
+										alertColor = 'warning'
+										Editor.prototype.addAlertLines(
+												alertWord, alertColor, lineNum);
+									}
 								}
 							} else if (part === partList["verb"]) {
 								if (lastPart === partList["verb"]) {
@@ -262,8 +266,9 @@
 									// }
 								} else if (lastDetailTwo === detailList["punctuation"]) {
 									alertWord = '動詞の位置がおかしい可能性があります。'
-										alertColor = 'warning'
-											Editor.prototype.addAlertLines(alertWord, alertColor, lineNum);
+									alertColor = 'warning'
+									Editor.prototype.addAlertLines(alertWord,
+											alertColor, lineNum);
 								}
 
 							} else if (part === partList["noun"]) {
@@ -289,13 +294,15 @@
 								// }
 							} else if (part === partList["filler"]) {
 								alertWord = '誤字が含まれている可能性があります。'
-									alertColor = 'warning'
-										Editor.prototype.addAlertLines(alertWord, alertColor, lineNum);
+								alertColor = 'warning'
+								Editor.prototype.addAlertLines(alertWord,
+										alertColor, lineNum);
 							} else if (part === partList["adjective"]) {
 								if (word.substr(0, 1) === word.substr(1, 2)) {
 									alertWord = '表現が適切でない可能性があります。'
-										alertColor = 'warning'
-											Editor.prototype.addAlertLines(alertWord, alertColor, lineNum);
+									alertColor = 'warning'
+									Editor.prototype.addAlertLines(alertWord,
+											alertColor, lineNum);
 								}
 							} else if (part === partList["auxVerb"]) {
 							}
@@ -308,14 +315,18 @@
 						i = (i + 1) | 0
 
 					}
-				}),1
+				}), 1
 	};
 
-	Editor.prototype.addAlertLines = function(alertWord, alertColor, lineNum){
+	Editor.prototype.addAlertLines = function(alertWord, alertColor, lineNum) {
 		var alertList = $(".alert-list");
 		var minutesLines = $(".minutes-lines");
-		alertList.append('<li class  ="validate-label"><span class = "label label-' + alertColor + '">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">'+ lineNum + "行目"+ '</span></li>')
-minutesLines.eq(lineNum - 1).addClass("yellow");
+		alertList
+				.append('<li class  ="validate-label"><span class = "label label-'
+						+ alertColor
+						+ '">誤字が含まれている可能性があります。</span><span class = "line-number label label-default">'
+						+ lineNum + "行目" + '</span></li>')
+		minutesLines.eq(lineNum - 1).addClass("yellow");
 	}
 
 	Editor.prototype.getStorageItem_ = function(count) {
@@ -441,6 +452,11 @@ minutesLines.eq(lineNum - 1).addClass("yellow");
 	Editor.prototype.uploadEvent_ = function() {
 
 	}
+
+	Editor.prototype.stampEvent_ = function() {
+		window.open('//ckip.worksap.co.jp/cws/cws/srwtimerec')
+	}
+
 	Editor.prototype.enterDocument();
 
 }(jQuery));
