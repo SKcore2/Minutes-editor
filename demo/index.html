@@ -17,30 +17,30 @@
   -->
 
 <html class="no-js" lang="ja">
+
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>議事録エディター</title>
-<link rel="stylesheet" type="text/css"
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/editor.css">
-<script src="bower_components/foundation/js/vendor/modernizr.js"></script>
-<script src="bower_components/vue/dist/vue.min.js"></script>
-<script src="bower_components/foundation/js/vendor/jquery.js"></script>
-<script src="bower_components/foundation/js/vendor/fastclick.js"></script>
-<script src="bower_components/foundation/js/foundation.min.js"></script>
-<script src="kuromoji/build/kuromoji.js"></script>
-<script src="js/jquery-linedtextarea.js"></script>
-<link href="css/jquery-linedtextarea.css" type="text/css"
-	rel="stylesheet" />
-<script src="js/encoding.js"></script>
-<script src="js/sidemenu.js"></script>
-<script src="js/stopwatch.js"></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>議事録エディター</title>
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/editor.css">
+	<script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+	<script src="bower_components/vue/dist/vue.min.js"></script>
+	<script src="bower_components/foundation/js/vendor/jquery.js"></script>
+	<script src="bower_components/foundation/js/vendor/fastclick.js"></script>
+	<script src="bower_components/foundation/js/foundation.min.js"></script>
+	<script src="kuromoji/build/kuromoji.js"></script>
+	<script src="js/jquery-linedtextarea.js"></script>
+	<link href="css/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
+	<script src="js/encoding.js"></script>
+	<script src="js/sidemenu.js"></script>
+	<script src="js/stopwatch.js"></script>
 
 
 
 </head>
+
 <body>
 	<div class="header-title-area">
 		<h1 class="page-title">議事録エディター</h1>
@@ -50,7 +50,7 @@
 
 
 			<div class="small-12 columns">
-			<div class="btn btn-default toggle-origin-edit">表示する</div>
+				<div class="btn btn-default toggle-origin-edit">表示する</div>
 				<div class="header-option">
 					<div class="watch-area">
 						<form name="myForm">
@@ -77,47 +77,38 @@
 						</div>
 						<div class="title-field">
 
-							<input class="editor-title origin-editor-title readonly"
-								placeholder="下書きを取り込んでください" readonly></input>
+							<input class="editor-title origin-editor-title readonly" placeholder="下書きを取り込んでください" readonly></input>
 						</div>
 
 						<form name="test">
-							<textarea name="txt" rows="10" cols="50" id="readonly-textarea"
-								class="editor-form readonly origin-editor-form" readonly></textarea>
+							<textarea name="txt" rows="10" cols="50" id="readonly-textarea" class="editor-form readonly origin-editor-form" readonly></textarea>
 						</form>
 					</div>
-
-
-
-
-
 
 					<div class="editor-sidemenu-area">
 
 						<ul class="editor-sidemenu sidemenu-css">
-							<li class="sidemenu-list read-format">フォーマット<span
-								class="glyphicon glyphicon-chevron-down side-dropdown-menu"></span><span
-								class="glyphicon glyphicon-plus create-format-icon"></span></li>
+							<li class="sidemenu-list read-format">フォーマット
+								<span class="glyphicon glyphicon-chevron-down side-dropdown-menu"></span>
+								<span class="glyphicon glyphicon-plus create-format-icon"></span>
+							</li>
 							<li class="sidemenu-list option-watch">ストップウォッチ</li>
 						</ul>
 					</div>
 
 
-
-
-
-
 					<div class="validate-editor-area">
-			 <div class = "header-area">
+						<div class="header-area">
 							<div class="dummy-file-btn btn btn-default new-dummy new-dummy-position">ファイルを選択</div>
 							<input type="file" id="new-selfile" class="reading-btn undisplay">
 							<div class="btn btn-default save-file-btn">保存する</div>
+							<div class="btn btn-default stamp-btn">打刻する</div>
+							<div class="btn btn-default create-repert-btn">日報を出す</div>							
 						</div>
 						<div class="large-12 columns">
 							<div class="title-field">
 
-								<input class="editor-title minutes-editor-title"
-									placeholder="タイトルを記入してください"></input>
+								<input class="editor-title minutes-editor-title" placeholder="タイトルを記入してください"></input>
 							</div>
 
 
@@ -125,8 +116,7 @@
 							<form v-show="!isLoading" class="validate-form">
 
 								<div class="editor-field">
-									<textarea class="editor-form lined" id="minutes-textarea"
-										name="textArea" v-model="textArea" row="30"></textarea>
+									<textarea class="editor-form lined" id="minutes-textarea" name="textArea" v-model="textArea" row="30"></textarea>
 								</div>
 								<div v-show="isLoading" data-alert="" class="alert-box radius">
 									<div v-text="message"></div>
@@ -177,8 +167,8 @@
                     -->
 
 								<svg v-style="visibility: svgStyle" width="100%" height="800px">
-                        <g id="lattice" transform="translate(20,20)"></g>
-                    </svg>
+									<g id="lattice" transform="translate(20,20)"></g>
+								</svg>
 
 							</form>
 						</div>
@@ -197,17 +187,16 @@
 		<script type="text/javascript" src="js/editor.js"></script>
 
 		<script src="js/tokenize.js"></script>
-		<script
-			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-		<div class="modal" id="staticModal" tabindex="-1" role="dialog"
-			aria-labelledby="staticModalLabel" aria-hidden="true"
-			data-show="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-show="true"
+		 data-keyboard="false" data-backdrop="static">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&#215;</span><span class="sr-only">閉じる</span>
+							<span aria-hidden="true">&#215;</span>
+							<span class="sr-only">閉じる</span>
 						</button>
 						<h4 class="modal-title">Static Modal タイトル</h4>
 					</div>
@@ -226,14 +215,14 @@
 		</div>
 
 
-		<div class="modal" id="formatModal" tabindex="-1" role="dialog"
-			aria-labelledby="staticModalLabel" aria-hidden="true"
-			data-show="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal" id="formatModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-show="true"
+		 data-keyboard="false" data-backdrop="static">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&#215;</span><span class="sr-only">閉じる</span>
+							<span aria-hidden="true">&#215;</span>
+							<span class="sr-only">閉じる</span>
 						</button>
 						<h4 class="modal-title">Static Modal タイトル</h4>
 					</div>
@@ -243,8 +232,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-						<button type="button" class="btn btn-primary"
-							id="create-format-btn">作成する</button>
+						<button type="button" class="btn btn-primary" id="create-format-btn">作成する</button>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -257,18 +245,18 @@
 
 
 
-	<div class="credit">This software includes the work that is
-		distributed in the Apache License 2.0"</div>
+	<div class="credit">This software includes the work that is distributed in the Apache License 2.0"</div>
 
 
 
 	<script>
 		$(document).foundation();
-		$(function() {
+		$(function () {
 			$(".lined").linedtextarea({
-				selectedLine : 1
+				selectedLine: 1
 			});
 		});
 	</script>
 </body>
+
 </html>

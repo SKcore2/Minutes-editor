@@ -50,6 +50,7 @@
 		this.$element_.on('click', '.upload-minutes', this.uploadEvent_
 				.bind(this));
 		this.$element_.on('click', '.stamp-btn', this.stampEvent_.bind(this));
+		this.$element_.on('click', '.create-repert-btn', this.createReportEvent_.bind(this));
 	}
 
 	Editor.prototype.keydownFunction_ = function(e) {
@@ -453,7 +454,14 @@
 
 	}
 
+	Editor.prototype.createReportEvent_ = function() {
+		window.open("https://maiw.hue.worksap.com/timeline/hue/timeline/projects/asset_dept_dailyreport");
+			}
+		
 
+	Editor.prototype.stampEvent_ = function() {
+		window.open('//ckip.worksap.co.jp/cws/cws/srwtimerec')
+	}
 
 	Editor.prototype.enterDocument();
 

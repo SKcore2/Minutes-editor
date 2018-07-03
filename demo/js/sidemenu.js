@@ -106,17 +106,17 @@
 			text : text,
 			title : title
 		}
-
+		lineNo = this.numbering_(lineNo);
 		if (lineNo === -1) {
 			lineNo = 0;
 			localStorage.setItem("format" + lineNo, JSON.stringify(format));
 		} else {
-			localStorage.setItem("format" + LineNo, JSON.stringify(format));
+			localStorage.setItem("format" + lineNo, JSON.stringify(format));
 		}
-		formatKey = "format" + LineNo;
+		formatKey = "format" + lineNo;
 		window.alert("フォーマットを保存しました")
 		this.changeFormatMode_();
-		this.newLineFormat_(format, LineNo, formatKey);
+		this.newLineFormat_(format, lineNo, formatKey);
 	}
 
 	Sidemenu.prototype.removeFormat_ = function(e) {
@@ -145,14 +145,13 @@
 	Sidemenu.prototype.initialGetStrage_ = function() {
 		var lineNo = 0;
 		var formatKey = "format" + lineNo;
-		var format = localStorage.getItem(formatKey);
 		var lollength = localStorage.length;
-
+		
 		for (var i = 0; i <= localStorage.length; i++) {
+			var formatKey = localStorage.key(i);			
+			var format = localStorage.getItem(formatKey);			
 			this.initialReadFormat_(format, lineNo, formatKey);
 			lineNo++;
-			formatKey = "format" + lineNo;
-			format = localStorage.getItem(formatKey);
 		}
 
 	}
@@ -240,6 +239,18 @@
 
 	}
 
+	Sidemenu.prototype.numbering_ = function(lineNo) {
+		var keyList = [];
+		localStorage.length;
+		for (var i = 0; i <= localStorage.length; i++) {
+			var keyNo = localStorage.key(i);
+			if(keyNo != null){
+				if(lineNo == keyNo.split('format')[1]){
+					lineNo++;
+				}	
+			}
+		  }
+		  return lineNo;
+	}
 	Sidemenu.prototype.enterDocument();
-
 }(jQuery));
