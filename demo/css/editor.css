@@ -2,7 +2,7 @@
 
 .editor-form {
 	min-height: 654px;
-	width: 1048px;
+	width: 1120px;
 	min-width: 420px;;
 	display: block !important;
 }
@@ -192,4 +192,8 @@ body {
 
 .header-area {
 	background-color: #333;
+}
+
+.remove-icon{
+	font-size: 10px;
 }

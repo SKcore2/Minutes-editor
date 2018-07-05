@@ -120,11 +120,13 @@
 	}
 
 	Sidemenu.prototype.removeFormat_ = function(e) {
+		if(window.confirm('消去してもいいですか？')){
 		var target = e.target;
 		var index = $(".create-format").index()
 		var key = $(target).parents(".create-format").data('key');
 		localStorage.removeItem(key);
 		this.deleteLineFormat_(target);
+		};
 	}
 
 	Sidemenu.prototype.changeFormatMode_ = function() {
